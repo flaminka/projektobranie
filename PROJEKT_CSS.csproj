@@ -59,6 +59,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moje_Arg_Wydarzen.cs" />
     <Compile Include="Praca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +89,12 @@
       <DependentUpon>Szkoła.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\DataSources\Praca.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\PROJEKT_CSS.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\PROJEKT_CSS.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Szkoła.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
