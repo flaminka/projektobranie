@@ -52,8 +52,15 @@ namespace PROJEKT_CSS
                 //żeby uaktualniało się okno główne wydarzeniem z okna Praca
                 //bierzemy wydarzenie Uzupelnianie_obserwacji okna praca1 (reprezentanta klasy Praca) i zatrudniamy gościa do radzenia sobie z tym wydarzeniem
                 praca1.Uzupelnianie_obserwacji += new EventHandler<Moje_Arg_Wydarzen>(praca1_Uzupelnianie_obserwacji);
-                praca1.Show();
-
+                // otwieranie okna tabelka
+                Tabela tabelka_praca = new Tabela();
+                tabelka_praca.IleKolumn = praca1.IleGroupBoxwOknie(praca1);
+                // ustawiam okno Form1 jako okno główne, w którym wyświetlę okno tabelka (W Form1 zaznaczyłam w IsMDIContainer!!!)
+                tabelka_praca.MdiParent = this;
+                tabelka_praca.Dock = DockStyle.Fill;
+                // wyświetlam nowe okno w oknie głównym
+                tabelka_praca.Show();
+                praca1.Show();   
             }
             
         }
