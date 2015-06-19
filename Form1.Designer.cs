@@ -31,15 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nowaSesjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nowaAnkietaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szkołaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pracaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kwestionariuszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statystykiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wykresyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabela_glowna = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -57,10 +58,18 @@
             // plikToolStripMenuItem
             // 
             this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nowaSesjaToolStripMenuItem,
             this.nowaAnkietaToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.plikToolStripMenuItem.Text = "Plik";
+            // 
+            // nowaSesjaToolStripMenuItem
+            // 
+            this.nowaSesjaToolStripMenuItem.Name = "nowaSesjaToolStripMenuItem";
+            this.nowaSesjaToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
+            this.nowaSesjaToolStripMenuItem.Text = "Nowa sesja";
+            this.nowaSesjaToolStripMenuItem.Click += new System.EventHandler(this.nowaSesjaToolStripMenuItem_Click);
             // 
             // nowaAnkietaToolStripMenuItem
             // 
@@ -106,31 +115,23 @@
             this.wykresyToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.wykresyToolStripMenuItem.Text = "Wykresy";
             // 
-            // label2
+            // tabela_glowna
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(779, 197);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(779, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.tabela_glowna.AllowUserToOrderColumns = true;
+            this.tabela_glowna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabela_glowna.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabela_glowna.Location = new System.Drawing.Point(0, 28);
+            this.tabela_glowna.Name = "tabela_glowna";
+            this.tabela_glowna.RowTemplate.Height = 24;
+            this.tabela_glowna.Size = new System.Drawing.Size(1003, 527);
+            this.tabela_glowna.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1003, 555);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tabela_glowna);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -140,6 +141,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,7 +157,7 @@
         private System.Windows.Forms.ToolStripMenuItem statystykiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wykresyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pracaToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem nowaSesjaToolStripMenuItem;
+        public System.Windows.Forms.DataGridView tabela_glowna;
     }
 }

@@ -8,6 +8,9 @@ namespace PROJEKT_CSS
 {
     static class Program
     {
+         public static Form1 mainform; //main window reference
+
+       
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -15,8 +18,11 @@ namespace PROJEKT_CSS
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.SetCompatibleTextRenderingDefault(false);   
+            Application.Run(mainform = new Form1());//   Application.Run(new Form1());
         }
     }
 }
+
+   
+

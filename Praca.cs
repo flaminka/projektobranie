@@ -15,29 +15,9 @@ namespace PROJEKT_CSS
     {
         public Praca()
         {
-            InitializeComponent();              
+            InitializeComponent();
+             
         }
-
-        private void praca_wyslij_Click(object sender, EventArgs e)
-        {
-
-            //dodać opcję dodawania gdzieś jakoś tych danych DODAC
-            //dodaję MessageBoxa, by sprawdzić czy wszystkie pola są wypełnione ZROBIC
-            //MessageBox.Show("Nie zaznaczono odpowiedzi", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //dodaję MessageBoxa, by poinformować o wypełnieniu ankiety i możliwości kolejnego jej wypełnienia
-            if (MessageBox.Show("Ankieta: Praca została wypełniona i wysłana do bazy danych. \n Czy chcesz wypełnić ją ponownie?", "Kolejne wypełnienie",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                ActiveForm.Close(); //zamykam obecne okno i otwieram nowe (mniej klikania niż przez menu)
-                Praca praca2 = new Praca(); 
-                praca2.Show();
-            }
-                else 
-                    {
-                        ActiveForm.Close(); //zamykam to okno po prostu
-                    }
-        }
-
         // jeśli w pytaniu 4 mam zaznaczone NIE, to 5 pytanie się chowa
         private void radioButton15_CheckedChanged(object sender, EventArgs e)
         {
@@ -74,45 +54,63 @@ namespace PROJEKT_CSS
             else return "-"; //zabezpieczenie jak nic nie zaznaczono, POPRAW na messageboxa      
         }
 
-       /* private string[] TworzenieRekordu(int IlePytan)//ilePytan=IleGroupBoxwOknie(praca1)
-        {
-            string[] rekord = { "11/22/1968", "29"};
-            for (int i = 1; i <= IlePytan; i++)
-            {
-                rekord[i] = BierzemyTekstzZaznaczonegoRadioButtona();  
-            }
-            return rekord;
-        }*/
 
         //funkcja odpowiadająca za pobieranie wszystkich odpowiedzi z groupboxów i łączenie ich w jeden wiersz
         //(reprezentowany jako ciąg string-ów); jej argumentem jest liczba pytań
         private string[] TworzenieRekordu(int LiczbaPytan)
         {
-            string[] rekord = new string[LiczbaPytan];
+            string[] rekord = new string[LiczbaPytan+1];
             int i = 0;
             foreach (var grupuś in Controls.OfType<GroupBox>())
             {
                rekord[i] = BierzemyTekstzZaznaczonegoRadioButtona(grupuś);
                i++;
             }
+            rekord[LiczbaPytan] = "Praca"; //żeby wiadomo było, z której ankiety
             Array.Reverse(rekord); //odwracam kolejność w tablicy na poprawną
             return rekord;
         }
 
+       
+        private void praca_wyslij_Click(object sender, EventArgs e)
+        {
+            //tworzymy zmienną, której przypisujemy wartość właściwości Text obiektu textBox1
+            string[] rekord = TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));
+            //tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie nuea (czyli tworzymy argumenty dla wydarzenia
+            Moje_Arg_Wydarzen Arg_Tabeli = new Moje_Arg_Wydarzen();
+            //przypisujemy tym argumentom wartość
+            Arg_Tabeli.wiersz = rekord;
+            //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
+            WyzwalaczUzupelnianie_obserwacji(Arg_Tabeli);
+
+            //dodać opcję dodawania gdzieś jakoś tych danych DODAC
+            //dodaję MessageBoxa, by sprawdzić czy wszystkie pola są wypełnione ZROBIC
+            //MessageBox.Show("Nie zaznaczono odpowiedzi", "Uwaga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //dodaję MessageBoxa, by poinformować o wypełnieniu ankiety i możliwości kolejnego jej wypełnienia
+            if (MessageBox.Show("Ankieta: Praca została wypełniona i wysłana do bazy danych. \n Czy chcesz wypełnić ją ponownie?", "Kolejne wypełnienie",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ActiveForm.Close(); //zamykam obecne okno i otwieram nowe (mniej klikania niż przez menu)
+                
+                Praca praca2 = new Praca();
+                praca2.Show();
+                praca2.Uzupelnianie_obserwacji += new EventHandler<Moje_Arg_Wydarzen>(praca2_Uzupelnianie_obserwacji);
+            }
+
+            else
+            {
+                ActiveForm.Close(); //zamykam to okno po prostu
+            }
+        }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+       private void praca2_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
+        {
+            //jeśli są jakieś właściwości argumentów to przypisujemy Name (które niesie wartość z praca1) obiektowi  z okna Form1, tj. label1
+            if (e != null && e.wiersz != null)
+                Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
+        }
 
 
         //PRZEKAZYWANIE DANYCH Z Praca DO  Form1 - pierwsze próby
@@ -127,52 +125,6 @@ namespace PROJEKT_CSS
             // a jego argumentami (wydarzenia Uzupelnianie_obserwacji) będą e
             if (Uzupelnianie_obserwacji != null)
                 Uzupelnianie_obserwacji(this, e);
-       }
-     
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            // do brania info z RadioButtona
-            //tworzymy zmienną, której przypisujemy wartość właściwości Text obiektu textBox1
-            string potrzebnaZmienna = BierzemyTekstzZaznaczonegoRadioButtona(groupBox1);
-           //tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie nuea (czyli tworzymy argumenty dla wydarzenia
-           Moje_Arg_Wydarzen nuea = new Moje_Arg_Wydarzen();
-            //przypisujemy tym argumentom wartość
-            nuea.Name = potrzebnaZmienna;
-            //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
-            WyzwalaczUzupelnianie_obserwacji(nuea);
-
-          textBox1.Text =IleGroupBoxwOknie(ActiveForm).ToString();
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //tworzymy zmienną, której przypisujemy wartość właściwości Text obiektu textBox1
-            string potrzebnaZmienna = textBox2.Text;
-            //tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie nuea (czyli tworzymy argumenty dla wydarzenia
-            Moje_Arg_Wydarzen nuea = new Moje_Arg_Wydarzen();
-            //przypisujemy tym argumentom wartość
-            nuea.Nazwa = potrzebnaZmienna;
-            //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
-            WyzwalaczUzupelnianie_obserwacji(nuea);
-            //dodawanie wiersza do tabeli
-            //dataGridView1.Rows.Add(TworzenieRekordu(IleGroupBoxwOknie(ActiveForm)));
-            //string[] zmienna = new string[IleGroupBoxwOknie(ActiveForm)];
-            //zmienna = TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));
-            foreach (Form f in Application.OpenForms)
-            {
-                if (f.Name == "Tabela")
-                {
-                    TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));
-                    f.Focus(); //przełącza na otwarte okno
-                    foreach ()
-                    {
-                    
-                    }
-                }
-
-            }
-        }
-            
     }
 }
