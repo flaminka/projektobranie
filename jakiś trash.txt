@@ -1,4 +1,13 @@
-ï»¿using System;
+          // otwieranie okna tabelka
+            //Tabela tabelka_praca = new Tabela();
+            // tabelka_praca.IleKolumn = praca2.IleGroupBoxwOknie(praca2);
+            // ustawiam okno Form1 jako okno g³ówne, w którym wyœwietlê okno tabelka (W Form1 zaznaczy³am w IsMDIContainer!!!)
+            // tabelka_praca.Dock = DockStyle.Fill;
+            //tabelka_praca.MdiParent = this.MdiParent;
+            // tabelka_praca.Show();
+            // wyœwietlam nowe okno w oknie g³ównym
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

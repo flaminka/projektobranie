@@ -44,19 +44,17 @@ namespace PROJEKT_CSS
         }
 
 
-        //próba wzięcia danych z zaznaczonych radiobuttonów kod z
-        //www.techbrij.com/get-selected-radio-button-text-windows-app-net
+        //próba wzięcia danych z zaznaczonych radiobuttonów kod z www.techbrij.com/get-selected-radio-button-text-windows-app-net
         private string BierzemyTekstzZaznaczonegoRadioButtona(GroupBox grb)
         {   //bierzemy into consideration elementy typu RadioButton z danego groupBoxa, a dokładniej, te
             //które spełniaja warunek bycia zaznaczonymi i tych RadioButtonów bierzemy właściwość Text
             if (grb.Controls.OfType<RadioButton>().SingleOrDefault(rad => rad.Checked == true) != null)
                 return grb.Controls.OfType<RadioButton>().SingleOrDefault(rad => rad.Checked == true).Text;
-            else return "-"; //zabezpieczenie jak nic nie zaznaczono, POPRAW na messageboxa      
+            else return "-"; //zabezpieczenie jak nic nie zaznaczono, POPRAW na messageboxa może?     
         }
 
 
-        //funkcja odpowiadająca za pobieranie wszystkich odpowiedzi z groupboxów i łączenie ich w jeden wiersz
-        //(reprezentowany jako ciąg string-ów); jej argumentem jest liczba pytań
+        //funkcja odpowiadająca za pobieranie wszystkich odpowiedzi z groupboxów i łączenie ich w jeden wiersz (reprezentowany jako ciąg string-ów); jej argumentem jest liczba pytań
         private string[] TworzenieRekordu(int LiczbaPytan)
         {
             string[] rekord = new string[LiczbaPytan+1];
@@ -66,7 +64,7 @@ namespace PROJEKT_CSS
                rekord[i] = BierzemyTekstzZaznaczonegoRadioButtona(grupuś);
                i++;
             }
-            rekord[LiczbaPytan] = "Praca"; //żeby wiadomo było, z której ankiety
+            rekord[LiczbaPytan] = "Praca"; //żeby wiadomo było, z której ankiety dane pochodzą
             Array.Reverse(rekord); //odwracam kolejność w tablicy na poprawną
             return rekord;
         }
@@ -74,9 +72,9 @@ namespace PROJEKT_CSS
        
         private void praca_wyslij_Click(object sender, EventArgs e)
         {
-            //tworzymy zmienną, której przypisujemy wartość właściwości Text obiektu textBox1
+            //tworzymy zmienną, której przypisujemy wartość rekordu
             string[] rekord = TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));
-            //tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie nuea (czyli tworzymy argumenty dla wydarzenia
+            //tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie Arg_Tabeli (czyli tworzymy argumenty dla wydarzenia)
             Moje_Arg_Wydarzen Arg_Tabeli = new Moje_Arg_Wydarzen();
             //przypisujemy tym argumentom wartość
             Arg_Tabeli.wiersz = rekord;
@@ -94,6 +92,7 @@ namespace PROJEKT_CSS
                 
                 Praca praca2 = new Praca();
                 praca2.Show();
+                //to samo co w oknie głównym, tylko robione z poziomu wywołania tego okna za pomocą przycisku wyślij
                 praca2.Uzupelnianie_obserwacji += new EventHandler<Moje_Arg_Wydarzen>(praca2_Uzupelnianie_obserwacji);
             }
 

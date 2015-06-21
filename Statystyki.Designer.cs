@@ -1,6 +1,6 @@
 ﻿namespace PROJEKT_CSS
 {
-    partial class Tabela
+    partial class Statystyki
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // Tabela
+            // Statystyki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1400, 200);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "Tabela";
-            this.Text = "Tabela";
+            this.ClientSize = new System.Drawing.Size(939, 616);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "Statystyki";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Statystyki";
             this.ResumeLayout(false);
 
         }

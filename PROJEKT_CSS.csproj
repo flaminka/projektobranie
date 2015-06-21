@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ikona.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
@@ -39,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,17 +72,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statystyki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statystyki.Designer.cs">
+      <DependentUpon>Statystyki.cs</DependentUpon>
+    </Compile>
     <Compile Include="Szkoła.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Szkoła.Designer.cs">
       <DependentUpon>Szkoła.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tabela.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tabela.Designer.cs">
-      <DependentUpon>Tabela.cs</DependentUpon>
+    <Compile Include="ZBIOR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZBIOR.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -91,11 +100,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Statystyki.resx">
+      <DependentUpon>Statystyki.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Szkoła.resx">
       <DependentUpon>Szkoła.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tabela.resx">
-      <DependentUpon>Tabela.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\Form1.datasource" />
@@ -118,9 +127,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ZBIOR.xsc">
+      <DependentUpon>ZBIOR.xsd</DependentUpon>
+    </None>
+    <None Include="ZBIOR.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ZBIOR.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ZBIOR.xss">
+      <DependentUpon>ZBIOR.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ikona.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
