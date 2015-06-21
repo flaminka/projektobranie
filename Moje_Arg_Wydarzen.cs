@@ -11,12 +11,7 @@ namespace PROJEKT_CSS
     public class Moje_Arg_Wydarzen : EventArgs
 
     {
-        //tworzymy zmienne, które będą przekazywane(są argumentami) i metody set get dla nich za jednym zamachem  "Auto-Implemented Properties"
-        public string Name { get; set; } 
-        public string Nazwa { get; set; }
-
-        public string[] wiersz { get; set; } //rekordów przekazywanie z okien do tabela_glowna
-
-
+        //tworzymy zmienne, które będą przekazywane (są argumentami) i metody set get dla nich za jednym zamachem  "Auto-Implemented Properties"
+        public string[] wiersz { get; set; } // do przekazywania rekordów z okien (ankiet) do tabela_glowna
     }
 }

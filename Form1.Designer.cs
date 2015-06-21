@@ -36,6 +36,7 @@
             this.nowaAnkietaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szkołaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pracaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zapiszDaneJakocsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zamknijToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kwestionariuszToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statystykiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.zapiszDaneJakocsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -56,8 +57,11 @@
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -104,16 +108,24 @@
             // szkołaToolStripMenuItem
             // 
             this.szkołaToolStripMenuItem.Name = "szkołaToolStripMenuItem";
-            this.szkołaToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
+            this.szkołaToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.szkołaToolStripMenuItem.Text = "Szkoła";
             this.szkołaToolStripMenuItem.Click += new System.EventHandler(this.szkołaToolStripMenuItem_Click);
             // 
             // pracaToolStripMenuItem
             // 
             this.pracaToolStripMenuItem.Name = "pracaToolStripMenuItem";
-            this.pracaToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
+            this.pracaToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.pracaToolStripMenuItem.Text = "Praca";
             this.pracaToolStripMenuItem.Click += new System.EventHandler(this.pracaToolStripMenuItem_Click);
+            // 
+            // zapiszDaneJakocsvToolStripMenuItem
+            // 
+            this.zapiszDaneJakocsvToolStripMenuItem.Name = "zapiszDaneJakocsvToolStripMenuItem";
+            this.zapiszDaneJakocsvToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
+            this.zapiszDaneJakocsvToolStripMenuItem.Text = "Zapisz dane jako .csv";
+            this.zapiszDaneJakocsvToolStripMenuItem.ToolTipText = "Zapisz dane w formacie .csv";
+            this.zapiszDaneJakocsvToolStripMenuItem.Click += new System.EventHandler(this.zapiszDaneJakocsvToolStripMenuItem_Click);
             // 
             // zamknijToolStripMenuItem
             // 
@@ -173,6 +185,10 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.tabela_glowna);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(1003, 498);
             this.splitContainer2.SplitterDistance = 631;
             this.splitContainer2.TabIndex = 0;
@@ -220,12 +236,15 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "label1";
             // 
-            // zapiszDaneJakocsvToolStripMenuItem
+            // splitContainer3
             // 
-            this.zapiszDaneJakocsvToolStripMenuItem.Name = "zapiszDaneJakocsvToolStripMenuItem";
-            this.zapiszDaneJakocsvToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
-            this.zapiszDaneJakocsvToolStripMenuItem.Text = "Zapisz dane jako .csv";
-            this.zapiszDaneJakocsvToolStripMenuItem.Click += new System.EventHandler(this.zapiszDaneJakocsvToolStripMenuItem_Click);
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainer3.Size = new System.Drawing.Size(368, 498);
+            this.splitContainer3.SplitterDistance = 126;
+            this.splitContainer3.TabIndex = 0;
             // 
             // Form1
             // 
@@ -250,9 +269,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,5 +301,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem zapiszDaneJakocsvToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer3;
     }
 }
