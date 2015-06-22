@@ -29,10 +29,14 @@ namespace PROJEKT_CSS
             if (radioButton15.Checked)
             {
                 groupBox5.Hide();
+                //łopatologicznie! zabezpieczenie: jak w pytaniu 4 jest Nie, to ma czyścić wszystkie wcześniej zaznaczone radiobuttony w pytaniu 5
+                    radioButton19.Checked = false;
+                    radioButton18.Checked = false;
+                    radioButton17.Checked = false;
+                    radioButton16.Checked = false;
             }
 
         }
-
 
         //jak ponownie zaznaczę w 4 pytaniu TAK, to 5 pytanie się pojawia
         private void radioButton14_CheckedChanged(object sender, EventArgs e)
@@ -106,7 +110,7 @@ namespace PROJEKT_CSS
 
        private void praca2_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
         {
-            //jeśli są jakieś właściwości argumentów to przypisujemy Name (które niesie wartość z praca1) obiektowi  z okna Form1, tj. label1
+            //jeśli są jakieś właściwości argumentów to przypisujemy wiersz (który niesie wartość z praca1) obiektowi z okna Form1 (tabeli)
             if (e != null && e.wiersz != null)
                 Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
         }

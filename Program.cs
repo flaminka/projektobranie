@@ -8,7 +8,7 @@ namespace PROJEKT_CSS
 {
     static class Program
     {
-         public static Form1 mainform; //main window reference
+         public static Form1 mainform; //referencja do głównego okna, na nim będziemy pracować
 
        
         /// <summary>

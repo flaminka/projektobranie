@@ -27,7 +27,7 @@ namespace PROJEKT_CSS
         public Form1()
         {
             InitializeComponent();//inicjalizator klasy - to, co chcę, żeby pojawiło się wraz z otworzeniem tego okna (tu:aplikacji)
-            
+           
         }
        
 
@@ -93,9 +93,6 @@ namespace PROJEKT_CSS
 
 
 
-
-
-
         //działanie opcji  Plik/Nowa ankieta/Szkoła 
         private void szkołaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -158,6 +155,7 @@ namespace PROJEKT_CSS
         {
             Statystyki stata = new Statystyki();
             stata.Show();
+
         }
 
 
@@ -189,7 +187,7 @@ namespace PROJEKT_CSS
              skryba.WriteLine(); //nowa linia
 
              //zapisujemy rekordy do pliku
-             for (int i = 0; i < (tabelka.Rows.Count - 1); i++) //o 1 wiersz mniej by nie czytało tego pustego
+             for (int i = 0; i < (tabelka.Rows.Count); i++)
              {
                  for (int j = 0; j < tabelka.Columns.Count; j++)
                  {
@@ -206,5 +204,7 @@ namespace PROJEKT_CSS
          }
 
 
+
+    
     }
 }

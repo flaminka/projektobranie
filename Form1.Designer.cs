@@ -45,6 +45,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabela_glowna = new System.Windows.Forms.DataGridView();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.tabcia_stat = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -59,7 +60,9 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabcia_stat)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -195,11 +198,16 @@
             // 
             // tabela_glowna
             // 
-            this.tabela_glowna.AllowUserToOrderColumns = true;
+            this.tabela_glowna.AllowUserToAddRows = false;
+            this.tabela_glowna.AllowUserToResizeColumns = false;
+            this.tabela_glowna.AllowUserToResizeRows = false;
+            this.tabela_glowna.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.tabela_glowna.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabela_glowna.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabela_glowna.Location = new System.Drawing.Point(0, 0);
             this.tabela_glowna.Name = "tabela_glowna";
+            this.tabela_glowna.ReadOnly = true;
+            this.tabela_glowna.RowHeadersVisible = false;
             this.tabela_glowna.RowTemplate.Height = 24;
             this.tabela_glowna.Size = new System.Drawing.Size(552, 498);
             this.tabela_glowna.TabIndex = 9;
@@ -214,6 +222,7 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.splitContainer3.Panel1.Controls.Add(this.tabcia_stat);
             // 
             // splitContainer3.Panel2
             // 
@@ -221,6 +230,20 @@
             this.splitContainer3.Size = new System.Drawing.Size(322, 498);
             this.splitContainer3.SplitterDistance = 214;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // tabcia_stat
+            // 
+            this.tabcia_stat.AllowUserToAddRows = false;
+            this.tabcia_stat.AllowUserToResizeRows = false;
+            this.tabcia_stat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabcia_stat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabcia_stat.Location = new System.Drawing.Point(0, 0);
+            this.tabcia_stat.Name = "tabcia_stat";
+            this.tabcia_stat.ReadOnly = true;
+            this.tabcia_stat.RowHeadersVisible = false;
+            this.tabcia_stat.RowTemplate.Height = 24;
+            this.tabcia_stat.Size = new System.Drawing.Size(322, 214);
+            this.tabcia_stat.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -264,8 +287,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).EndInit();
+            this.splitContainer3.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabcia_stat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +315,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem zapiszDaneJakocsvToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        public System.Windows.Forms.SplitContainer splitContainer3;
+        public System.Windows.Forms.DataGridView tabcia_stat;
     }
 }

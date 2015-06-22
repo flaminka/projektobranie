@@ -40,7 +40,7 @@ namespace PROJEKT_CSS
         //funkcja odpowiadająca za pobieranie wszystkich odpowiedzi z groupboxów i łączenie ich w jeden wiersz (reprezentowany jako ciąg string-ów); jej argumentem jest liczba pytań
         private string[] TworzenieRekordu(int LiczbaPytan)
         {
-            string[] rekord = new string[LiczbaPytan+1]; // +1 bo zaczyna się od 0
+            string[] rekord = new string[LiczbaPytan+1]; // +1 bo zaczyna się od 0, hmmm
             int i = 0;
             foreach (var grupuś in Controls.OfType<GroupBox>())
             {
@@ -82,7 +82,7 @@ namespace PROJEKT_CSS
 
        private void szkoła2_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
         {
-            //jeśli są jakieś właściwości argumentów to przypisujemy Name (które niesie wartość z praca1) obiektowi  z okna Form1, tj. label1
+            //jeśli są jakieś właściwości argumentów to przypisujemy wiersz (który niesie wartość z szkoła1) obiektowi z okna Form1 (tabeli)
             if (e != null && e.wiersz != null)
                 Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
         }
@@ -100,6 +100,10 @@ namespace PROJEKT_CSS
             if (Uzupelnianie_obserwacji != null)
                 Uzupelnianie_obserwacji(this, e);
         }
+
+
+
+
 
     }
 }
