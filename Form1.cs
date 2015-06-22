@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO; //do zapisywania tabeli
+using System.IO;
+using System.Diagnostics; //do zapisywania tabeli
+using RDotNet; //do łączenia R i C#, do zrobienia kiedyś
 
 
 namespace PROJEKT_CSS
 {
+
+
     public partial class Form1 : Form
     {
 
@@ -23,14 +27,16 @@ namespace PROJEKT_CSS
         public Form1()
         {
             InitializeComponent();//inicjalizator klasy - to, co chcę, żeby pojawiło się wraz z otworzeniem tego okna (tu:aplikacji)
+            
         }
        
 
         //MENUSTRIP
 
-        // działanie opcji Plik/Nowa sesja - usuwam wiersze i kolumny i aktualizuje wygląd tabela_glowna
+        // działanie opcji Plik/Nowa sesja 
         private void nowaSesjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //usuwamy wiersze i kolumny i aktualizuje wygląd tabela_glowna
             tabela_glowna.Rows.Clear();
             tabela_glowna.Columns.Clear();
             tabela_glowna.Refresh();
@@ -40,7 +46,7 @@ namespace PROJEKT_CSS
         // działanie opcji Plik/Nowa ankieta/Praca
         private void pracaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //zapobiegam kilkukrotnemu otwarciu tego samego okna; zmodyfikowana wersja kodu z www.c-sharpcorner.com/UploadFile/kirtan007/how-to-prevent-multiple-instances-of-child-form-in-mdi-windows-form-application/
+            //zapobiegamy kilkukrotnemu otwarciu tego samego okna; zmodyfikowana wersja kodu z www.c-sharpcorner.com/UploadFile/kirtan007/how-to-prevent-multiple-instances-of-child-form-in-mdi-windows-form-application/
             bool OknoOtwarte = false;
             foreach (Form f in Application.OpenForms)
             {
@@ -60,7 +66,7 @@ namespace PROJEKT_CSS
 
                 if(tabela_glowna.ColumnCount == 0) //jak zamkniemy okno i uruchomimy je z menustrip, to żeby nam nie dodało kolumn jeszcze raz
                 {
-                        tabela_glowna.Columns.Add("ankieta", "Ankieta");
+                        tabela_glowna.Columns.Add("ankieta", "ankieta");
                         IleKolumn = praca1.IleGroupBoxwOknie(praca1); //ustalenie liczby kolumn potrzebnych do tej ankiety
                         for (int i = 1; i <= IleKolumn; i++) //nazywanie kolumn i nagłówków kolumn
                         {
@@ -114,7 +120,7 @@ namespace PROJEKT_CSS
 
                 if (tabela_glowna.ColumnCount == 0) //jak zamkniemy okno i uruchomimy je z menustrip, to żeby nam nie dodało kolumn jeszcze raz
                 {
-                    tabela_glowna.Columns.Add("ankieta", "Ankieta");
+                    tabela_glowna.Columns.Add("ankieta", "ankieta");
                     IleKolumn = szkoła1.IleGroupBoxwOknie(szkoła1); //ustalenie liczby kolumn potrzebnych do tej ankiety
                     for (int i = 1; i <= IleKolumn; i++) //nazywanie kolumn i nagłówków kolumn
                     {
@@ -139,39 +145,7 @@ namespace PROJEKT_CSS
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
         // działanie opcji Plik/Zamknij
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -232,10 +206,5 @@ namespace PROJEKT_CSS
          }
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // DataSet zbiorek = (DataSet)(tabela_glowna.DataSource);
-
-        }
     }
 }

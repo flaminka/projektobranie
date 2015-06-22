@@ -44,12 +44,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabela_glowna = new System.Windows.Forms.DataGridView();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -108,14 +106,14 @@
             // szkołaToolStripMenuItem
             // 
             this.szkołaToolStripMenuItem.Name = "szkołaToolStripMenuItem";
-            this.szkołaToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.szkołaToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
             this.szkołaToolStripMenuItem.Text = "Szkoła";
             this.szkołaToolStripMenuItem.Click += new System.EventHandler(this.szkołaToolStripMenuItem_Click);
             // 
             // pracaToolStripMenuItem
             // 
             this.pracaToolStripMenuItem.Name = "pracaToolStripMenuItem";
-            this.pracaToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.pracaToolStripMenuItem.Size = new System.Drawing.Size(121, 24);
             this.pracaToolStripMenuItem.Text = "Praca";
             this.pracaToolStripMenuItem.Click += new System.EventHandler(this.pracaToolStripMenuItem_Click);
             // 
@@ -204,6 +202,16 @@
             this.tabela_glowna.Size = new System.Drawing.Size(631, 498);
             this.tabela_glowna.TabIndex = 9;
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainer3.Size = new System.Drawing.Size(368, 498);
+            this.splitContainer3.SplitterDistance = 214;
+            this.splitContainer3.TabIndex = 0;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -217,42 +225,11 @@
             // 
             this.timer1.Enabled = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(188, -1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(355, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "label1";
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.splitContainer3.Size = new System.Drawing.Size(368, 498);
-            this.splitContainer3.SplitterDistance = 126;
-            this.splitContainer3.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1003, 555);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -297,8 +274,6 @@
         public System.Windows.Forms.DataGridView tabela_glowna;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem zapiszDaneJakocsvToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer3;
