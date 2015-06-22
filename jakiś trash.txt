@@ -159,3 +159,27 @@ namespace PROJEKT_CSS
 }
 
 
+
+///////////////
+
+
+   /*
+                                   int indeks = kolumna.Index;
+                     string[] opcje = new string[Program.mainform.IleKolumn+1]; 
+                     
+                     foreach (DataGridViewRow wiersz in Program.mainform.tabela_glowna.Rows)
+                     {
+
+
+                         for (int j = 0; j < i+1; j++)
+                         {
+                             if (wiersz.Cells[indeks].Value.ToString() != opcje[j])
+                             {
+                                 opcje[i] = wiersz.Cells[indeks].Value.ToString();
+                                 i++;
+                                 //gdzieœ -1 na kol lub wiersz
+                                 //wzi¹æ jakoœ listê wartoœci z danej kolumny i policzyæ procenty dla nich
+                             }
+                         }
+                        
+                     }*/

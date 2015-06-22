@@ -20,7 +20,7 @@ namespace PROJEKT_CSS
     {
 
         //ZMIENNE
-        private int IleKolumn; //liczba kolumn w tabela_glowna
+        public int IleKolumn; //liczba kolumn w tabela_glowna
 
 
         //INICJALIZATOR
@@ -71,7 +71,7 @@ namespace PROJEKT_CSS
                         for (int i = 1; i <= IleKolumn; i++) //nazywanie kolumn i nagłówków kolumn
                         {
                             string nazwaKolumny = "pytanie" + i.ToString();
-                            string naglowekKolumny = "pytanie " + i.ToString();
+                            string naglowekKolumny = "pytanie" + i.ToString();
                             tabela_glowna.Columns.Add(nazwaKolumny, naglowekKolumny);
                         }
                 }
@@ -125,7 +125,7 @@ namespace PROJEKT_CSS
                     for (int i = 1; i <= IleKolumn; i++) //nazywanie kolumn i nagłówków kolumn
                     {
                         string nazwaKolumny = "pytanie" + i.ToString();
-                        string naglowekKolumny = "pytanie " + i.ToString();
+                        string naglowekKolumny = "pytanie" + i.ToString();
                         tabela_glowna.Columns.Add(nazwaKolumny, naglowekKolumny);
                     }
                 }

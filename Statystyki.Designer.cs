@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.generujStatystyki_przycisk = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -37,15 +37,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.liczba_obs_label = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.zBIOR = new PROJEKT_CSS.ZBIOR();
-            this.zBIORBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zBIOR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zBIORBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -113,36 +108,50 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 122);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dataGridView1.Location = new System.Drawing.Point(224, 189);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(146, 326);
+            this.dataGridView1.Size = new System.Drawing.Size(304, 150);
             this.dataGridView1.TabIndex = 9;
             // 
-            // form1BindingSource
+            // Column1
             // 
-            this.form1BindingSource.DataSource = typeof(PROJEKT_CSS.Form1);
+            this.Column1.HeaderText = "Odpowiedź";
+            this.Column1.Name = "Column1";
             // 
-            // zBIOR
+            // Column2
             // 
-            this.zBIOR.DataSetName = "ZBIOR";
-            this.zBIOR.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.Column2.HeaderText = "Procent";
+            this.Column2.Name = "Column2";
             // 
-            // zBIORBindingSource
+            // Column3
             // 
-            this.zBIORBindingSource.DataSource = this.zBIOR;
-            this.zBIORBindingSource.Position = 0;
-            // 
-            // dataTable1BindingSource
-            // 
-            this.dataTable1BindingSource.DataMember = "DataTable1";
-            this.dataTable1BindingSource.DataSource = this.zBIORBindingSource;
+            this.Column3.HeaderText = "N";
+            this.Column3.Name = "Column3";
             // 
             // Statystyki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(792, 616);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.liczba_obs_label);
@@ -157,10 +166,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statystyki";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zBIOR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zBIORBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,9 +181,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label liczba_obs_label;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource form1BindingSource;
-        private ZBIOR zBIOR;
-        private System.Windows.Forms.BindingSource zBIORBindingSource;
-        private System.Windows.Forms.BindingSource dataTable1BindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
