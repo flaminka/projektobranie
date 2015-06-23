@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,9 +49,9 @@
             this.tabela_glowna = new System.Windows.Forms.DataGridView();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tabcia_stat = new System.Windows.Forms.DataGridView();
+            this.wykres = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -61,8 +64,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabcia_stat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wykres)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -160,6 +165,8 @@
             this.wykresyToolStripMenuItem.Name = "wykresyToolStripMenuItem";
             this.wykresyToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.wykresyToolStripMenuItem.Text = "Wykresy";
+            this.wykresyToolStripMenuItem.ToolTipText = "Utwórz wykresy dla danych";
+            this.wykresyToolStripMenuItem.Click += new System.EventHandler(this.wykresyToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -176,7 +183,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Size = new System.Drawing.Size(878, 527);
-            this.splitContainer1.SplitterDistance = 498;
+            this.splitContainer1.SplitterDistance = 488;
             this.splitContainer1.TabIndex = 11;
             // 
             // splitContainer2
@@ -192,8 +199,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(878, 498);
-            this.splitContainer2.SplitterDistance = 552;
+            this.splitContainer2.Size = new System.Drawing.Size(878, 488);
+            this.splitContainer2.SplitterDistance = 564;
             this.splitContainer2.TabIndex = 0;
             // 
             // tabela_glowna
@@ -209,7 +216,7 @@
             this.tabela_glowna.ReadOnly = true;
             this.tabela_glowna.RowHeadersVisible = false;
             this.tabela_glowna.RowTemplate.Height = 24;
-            this.tabela_glowna.Size = new System.Drawing.Size(552, 498);
+            this.tabela_glowna.Size = new System.Drawing.Size(564, 488);
             this.tabela_glowna.TabIndex = 9;
             // 
             // splitContainer3
@@ -227,14 +234,16 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.splitContainer3.Size = new System.Drawing.Size(322, 498);
-            this.splitContainer3.SplitterDistance = 214;
+            this.splitContainer3.Panel2.Controls.Add(this.wykres);
+            this.splitContainer3.Size = new System.Drawing.Size(310, 488);
+            this.splitContainer3.SplitterDistance = 277;
             this.splitContainer3.TabIndex = 0;
             // 
             // tabcia_stat
             // 
             this.tabcia_stat.AllowUserToAddRows = false;
             this.tabcia_stat.AllowUserToResizeRows = false;
+            this.tabcia_stat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.tabcia_stat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabcia_stat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabcia_stat.Location = new System.Drawing.Point(0, 0);
@@ -242,14 +251,35 @@
             this.tabcia_stat.ReadOnly = true;
             this.tabcia_stat.RowHeadersVisible = false;
             this.tabcia_stat.RowTemplate.Height = 24;
-            this.tabcia_stat.Size = new System.Drawing.Size(322, 214);
+            this.tabcia_stat.Size = new System.Drawing.Size(310, 277);
             this.tabcia_stat.TabIndex = 0;
+            this.tabcia_stat.Visible = false;
+            // 
+            // wykres
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.wykres.ChartAreas.Add(chartArea1);
+            this.wykres.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.wykres.Legends.Add(legend1);
+            this.wykres.Location = new System.Drawing.Point(0, 0);
+            this.wykres.Name = "wykres";
+            this.wykres.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            this.wykres.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.wykres.Series.Add(series1);
+            this.wykres.Size = new System.Drawing.Size(310, 207);
+            this.wykres.TabIndex = 0;
+            this.wykres.Text = "wykres";
+            this.wykres.Visible = false;
             // 
             // statusStrip1
             // 
             this.statusStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 3);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 13);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
             this.statusStrip1.Size = new System.Drawing.Size(878, 22);
@@ -288,9 +318,11 @@
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabela_glowna)).EndInit();
             this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabcia_stat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wykres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,9 +345,9 @@
         public System.Windows.Forms.DataGridView tabela_glowna;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem zapiszDaneJakocsvToolStripMenuItem;
         public System.Windows.Forms.SplitContainer splitContainer3;
         public System.Windows.Forms.DataGridView tabcia_stat;
+        public System.Windows.Forms.DataVisualization.Charting.Chart wykres;
     }
 }

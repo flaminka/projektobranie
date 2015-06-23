@@ -154,8 +154,9 @@ namespace PROJEKT_CSS
         private void statystykiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Statystyki stata = new Statystyki();
-            stata.Show();
-
+            if (stata.comboBox1.Items.Count == 0) //jak nie wygenerujemy danych z ankiet to nie otworzy okna
+                MessageBox.Show("Wygeneruj najpierw dane wypełniając ankiety!", "Brak danych");
+            else stata.Show();
         }
 
 
@@ -202,6 +203,18 @@ namespace PROJEKT_CSS
              //zamykamy plik
              skryba.Close();
          }
+
+
+        // działanie opcji Kwestionariusz/Wykresy
+        private void wykresyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Wykresy wykresiki = new Wykresy();
+            if (tabela_glowna.RowCount == 0) //jak nie wygenerujemy pierw danych to nie otworzy okna
+            {
+                MessageBox.Show("Wygeneruj najpierw dane wypełniając ankiety!", "Brak danych");
+            }
+            else wykresiki.Show();
+        }
 
 
 

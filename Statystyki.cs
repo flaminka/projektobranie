@@ -66,8 +66,14 @@ namespace PROJEKT_CSS
         //przycisk Generuj statystyki
         private void generujStatystyki_przycisk_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedItem != null) //jak nic nie będzie wybrane, to żeby program przeżył
-            { 
+            wyliczStatystyki();
+        }
+
+        //wyliczamy dla wybranego pytania statystyki
+        private void wyliczStatystyki()
+        {
+            if (comboBox1.SelectedItem != null) //jak nic nie będzie wybrane, to żeby program przeżył
+            {
                 string pytanie = comboBox1.SelectedItem.ToString(); //bierzemy wybrane pytanie
                 foreach (DataGridViewColumn kolumna in TAB_GL.Columns)
                 {
@@ -124,7 +130,7 @@ namespace PROJEKT_CSS
         // przycisk Wyślij do okna głównego
        private void statystyki_wyslij_Click(object sender, EventArgs e)
         {
-           
+            Program.mainform.tabcia_stat.Show();
             kopiujDane();
             ActiveForm.Close();
 
