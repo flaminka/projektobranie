@@ -52,6 +52,7 @@
             this.wykres = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.zapiszStatystykiJakocsvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -90,6 +91,7 @@
             this.nowaSesjaToolStripMenuItem,
             this.nowaAnkietaToolStripMenuItem,
             this.zapiszDaneJakocsvToolStripMenuItem,
+            this.zapiszStatystykiJakocsvToolStripMenuItem,
             this.zamknijToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
@@ -98,7 +100,7 @@
             // nowaSesjaToolStripMenuItem
             // 
             this.nowaSesjaToolStripMenuItem.Name = "nowaSesjaToolStripMenuItem";
-            this.nowaSesjaToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
+            this.nowaSesjaToolStripMenuItem.Size = new System.Drawing.Size(244, 24);
             this.nowaSesjaToolStripMenuItem.Text = "Nowa sesja";
             this.nowaSesjaToolStripMenuItem.ToolTipText = "Utwórz nową tabelę na dane";
             this.nowaSesjaToolStripMenuItem.Click += new System.EventHandler(this.nowaSesjaToolStripMenuItem_Click);
@@ -109,7 +111,7 @@
             this.szkołaToolStripMenuItem,
             this.pracaToolStripMenuItem});
             this.nowaAnkietaToolStripMenuItem.Name = "nowaAnkietaToolStripMenuItem";
-            this.nowaAnkietaToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
+            this.nowaAnkietaToolStripMenuItem.Size = new System.Drawing.Size(244, 24);
             this.nowaAnkietaToolStripMenuItem.Text = "Nowa ankieta";
             this.nowaAnkietaToolStripMenuItem.ToolTipText = "Wybierz ankietę";
             // 
@@ -130,7 +132,7 @@
             // zapiszDaneJakocsvToolStripMenuItem
             // 
             this.zapiszDaneJakocsvToolStripMenuItem.Name = "zapiszDaneJakocsvToolStripMenuItem";
-            this.zapiszDaneJakocsvToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
+            this.zapiszDaneJakocsvToolStripMenuItem.Size = new System.Drawing.Size(244, 24);
             this.zapiszDaneJakocsvToolStripMenuItem.Text = "Zapisz dane jako .csv";
             this.zapiszDaneJakocsvToolStripMenuItem.ToolTipText = "Zapisz dane w formacie .csv";
             this.zapiszDaneJakocsvToolStripMenuItem.Click += new System.EventHandler(this.zapiszDaneJakocsvToolStripMenuItem_Click);
@@ -138,7 +140,7 @@
             // zamknijToolStripMenuItem
             // 
             this.zamknijToolStripMenuItem.Name = "zamknijToolStripMenuItem";
-            this.zamknijToolStripMenuItem.Size = new System.Drawing.Size(217, 24);
+            this.zamknijToolStripMenuItem.Size = new System.Drawing.Size(244, 24);
             this.zamknijToolStripMenuItem.Text = "Zamknij";
             this.zamknijToolStripMenuItem.ToolTipText = "Zamknij aplikację KWESTi";
             this.zamknijToolStripMenuItem.Click += new System.EventHandler(this.zamknijToolStripMenuItem_Click);
@@ -155,7 +157,7 @@
             // statystykiToolStripMenuItem
             // 
             this.statystykiToolStripMenuItem.Name = "statystykiToolStripMenuItem";
-            this.statystykiToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.statystykiToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.statystykiToolStripMenuItem.Text = "Statystyki";
             this.statystykiToolStripMenuItem.ToolTipText = "Policz statystyki dla danych";
             this.statystykiToolStripMenuItem.Click += new System.EventHandler(this.statystykiToolStripMenuItem_Click);
@@ -163,7 +165,7 @@
             // wykresyToolStripMenuItem
             // 
             this.wykresyToolStripMenuItem.Name = "wykresyToolStripMenuItem";
-            this.wykresyToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.wykresyToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.wykresyToolStripMenuItem.Text = "Wykresy";
             this.wykresyToolStripMenuItem.ToolTipText = "Utwórz wykresy dla danych";
             this.wykresyToolStripMenuItem.Click += new System.EventHandler(this.wykresyToolStripMenuItem_Click);
@@ -293,6 +295,14 @@
             // 
             this.timer1.Enabled = true;
             // 
+            // zapiszStatystykiJakocsvToolStripMenuItem
+            // 
+            this.zapiszStatystykiJakocsvToolStripMenuItem.Name = "zapiszStatystykiJakocsvToolStripMenuItem";
+            this.zapiszStatystykiJakocsvToolStripMenuItem.Size = new System.Drawing.Size(244, 24);
+            this.zapiszStatystykiJakocsvToolStripMenuItem.Text = "Zapisz statystyki jako .csv";
+            this.zapiszStatystykiJakocsvToolStripMenuItem.ToolTipText = "Zapisz statystyki w formacie .csv";
+            this.zapiszStatystykiJakocsvToolStripMenuItem.Click += new System.EventHandler(this.zapiszStatystykiJakocsvToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -352,5 +362,6 @@
         public System.Windows.Forms.SplitContainer splitContainer3;
         public System.Windows.Forms.DataGridView tabcia_stat;
         public System.Windows.Forms.DataVisualization.Charting.Chart wykres;
+        private System.Windows.Forms.ToolStripMenuItem zapiszStatystykiJakocsvToolStripMenuItem;
     }
 }

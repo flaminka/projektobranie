@@ -32,7 +32,7 @@ namespace PROJEKT_CSS
             if (radioButton15.Checked)
             {
                 groupBox5.Hide();
-                //łopatologicznie! zabezpieczenie: jak w pytaniu 4 jest Nie, to ma czyścić wszystkie wcześniej zaznaczone radiobuttony w pytaniu 5
+                // zabezpieczenie: jak w pytaniu 4 jest Nie, to ma czyścić wszystkie wcześniej zaznaczone radiobuttony w pytaniu 5
                     radioButton19.Checked = false;
                     radioButton18.Checked = false;
                     radioButton17.Checked = false;

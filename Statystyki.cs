@@ -16,24 +16,16 @@ namespace PROJEKT_CSS
     {
 
         //ZMIENNE
+
+
         DataGridView TAB_GL = Program.mainform.tabela_glowna; //przypisanie po prostu
 
         //INICJALIZATOR
+
+
         public Statystyki()
         {
             InitializeComponent();
-
-            /*do WPF
-            ElementHost elhost = new ElementHost();
-            elhost.Size = new Size(561, 32);
-            elhost.Location = new Point(357, 23);
-
-            MyWPFControl wpfctl = new MyWPFControl();
-            elhost.Child = wpfctl;
-
-            this.Controls.Add(elhost);
-             */
-            
             comboBox1.Items.Clear();
             
             //dodajemy pytania do comboboxa
@@ -89,7 +81,7 @@ namespace PROJEKT_CSS
                         string[] rodzaj_odp = opcje.ToArray<string>(); //lista z rodzajami odpowiedziami
 
                         //zapisujemy listę odpowiedzi, które wystąpiły dla danego pytania
-                        IList<string> lista = new List<string>();
+                        List<string> lista = new List<string>();
                         foreach (DataGridViewRow wiersz in TAB_GL.Rows)
                         {
                             if (wiersz != null)

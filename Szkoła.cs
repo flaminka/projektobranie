@@ -14,6 +14,8 @@ namespace PROJEKT_CSS
     {
 
         //INICJALIZATOR
+
+
         public Szkoła()
         {
             InitializeComponent();
@@ -35,12 +37,13 @@ namespace PROJEKT_CSS
             string[] etykietki = DodawanieEtykiet(IleGroupBoxwOknie(ActiveForm)); //dodajemy etykiety kolumnom
             Arg_Tabeli.etykiety = etykietki;
 
-            WyzwalaczUzupelnianie_obserwacji(Arg_Tabeli);    //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
+            WyzwalaczUzupelnianie_obserwacji(Arg_Tabeli); //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
+
             //dodajemy MessageBoxa, by poinformować o wypełnieniu ankiety i możliwości kolejnego jej wypełnienia
             if (MessageBox.Show("Ankieta: Szkoła została wypełniona i wysłana do bazy danych. \n Czy chcesz wypełnić ją ponownie?", "Kolejne wypełnienie",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                ActiveForm.Close(); //zamykam obecne okno i otwieram nowe (mniej klikania niż przez menu)
+                ActiveForm.Close(); //zamykamy obecne okno i otwieram nowe (mniej klikania niż przez menu)
                 Szkoła szkoła2 = new Szkoła();
                 szkoła2.Show();
                 //to samo co w oknie głównym, tylko robione z poziomu wywołania tego okna za pomocą przycisku wyślij
@@ -141,8 +144,6 @@ namespace PROJEKT_CSS
             }
 
         }
-
-
 
     }
 }

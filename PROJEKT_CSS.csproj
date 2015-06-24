@@ -74,9 +74,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Moje_Arg_Wydarzen.cs" />
-    <Compile Include="MyWPFControl.xaml.cs">
-      <DependentUpon>MyWPFControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Praca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,11 +99,6 @@
     </Compile>
     <Compile Include="Wykresy.Designer.cs">
       <DependentUpon>Wykresy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZBIOR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZBIOR.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -150,29 +142,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ZBIOR.xsc">
-      <DependentUpon>ZBIOR.xsd</DependentUpon>
-    </None>
-    <None Include="ZBIOR.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ZBIOR.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="ZBIOR.xss">
-      <DependentUpon>ZBIOR.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ikona.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="MyWPFControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
