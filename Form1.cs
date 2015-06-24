@@ -40,6 +40,15 @@ namespace PROJEKT_CSS
             tabela_glowna.Rows.Clear();
             tabela_glowna.Columns.Clear();
             tabela_glowna.Refresh();
+            //usuwamy wiersze i kolumny i aktualizuje wygląd tabcia_stat
+            tabcia_stat.Rows.Clear();
+            tabcia_stat.Columns.Clear();
+            tabcia_stat.Refresh();
+            tabcia_stat.Hide();
+            //do odświeżania wykresu POPRAWIC - tytuł się nie odświeża
+            wykres.Series.Clear();
+            wykres.Titles.Clear();
+            wykres.Hide();
         }
 
  
@@ -85,9 +94,23 @@ namespace PROJEKT_CSS
         //określamy co ten gostek ma robić, gdy wywoływane jest wydarzenie Uzupełnianie_obserwacji z praca1
         private void praca1_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
         {
-            //jeśli są jakieś właściwości argumentów to przypisujemy zmienną wiersz (która niesie wartość z praca1) obiektowi z okna Form1, tj. tabela_glowna
-            if (e != null && e.wiersz != null)
-                tabela_glowna.Rows.Add(e.wiersz);
+            //jeśli są jakieś właściwości argumentów to dodajemy wiersz (który niesie wartości z praca1) obiektowi z okna Form1, tj. tabela_glowna
+            if (e != null && e.wiersz != null && e.etykiety != null)
+            {
+                //dodajemy etykiety kolumnom
+                int i = 0;
+                foreach (DataGridViewColumn kol in Program.mainform.tabela_glowna.Columns)
+                {
+                    if (kol.Name != "ankieta")
+                    {
+                        kol.ToolTipText = e.etykiety[i];
+                        i++;
+                    }
+                }
+                //dodajemy obserwacje
+                Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
+
+            }
 
         }
 
@@ -136,13 +159,40 @@ namespace PROJEKT_CSS
         //określamy co ten gostek ma robić, gdy wywoływane jest wydarzenie Uzupełnianie_obserwacji z szkoła1
         private void szkoła1_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
         {
-            //jeśli są jakieś właściwości argumentów to przypisujemy zmienną wiersz (która niesie wartość z praca1) obiektowi z okna Form1, tj. tabela_glowna
-            if (e != null && e.wiersz != null)
-                tabela_glowna.Rows.Add(e.wiersz);
+            //jeśli są jakieś właściwości argumentów to dodajemy wiersz (który niesie wartości z praca1) obiektowi z okna Form1, tj. tabela_glowna
+            if (e != null && e.wiersz != null && e.etykiety != null)
+            {
+                //dodajemy etykiety kolumnom
+                int i = 0;
+                foreach (DataGridViewColumn kol in Program.mainform.tabela_glowna.Columns)
+                {
+                    if (kol.Name != "ankieta")
+                    {
+                        kol.ToolTipText = e.etykiety[i];
+                        i++;
+                    }
+                }
+                //dodajemy obserwacje
+                Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
+
+            }
 
         }
 
-        
+
+        // działanie opcji Plik/Zapisz dane jako .csv
+        private void zapiszDaneJakocsvToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog okno_sciezki = new FolderBrowserDialog(); //wybór miejsca zapisu danych 
+            if (okno_sciezki.ShowDialog() == DialogResult.OK)
+            {
+                EksportDoCSV(Program.mainform.tabela_glowna, okno_sciezki.SelectedPath); //eksport danych
+                MessageBox.Show("Dane zostały zapisany w " + okno_sciezki.SelectedPath.ToString(), "Zapisano dane");
+            }
+
+        }
+
+
         // działanie opcji Plik/Zamknij
         private void zamknijToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -160,13 +210,19 @@ namespace PROJEKT_CSS
         }
 
 
-        // działanie opcji Plik/Zapisz dane jako .csv
-        private void zapiszDaneJakocsvToolStripMenuItem_Click(object sender, EventArgs e)
+        // działanie opcji Kwestionariusz/Wykresy
+        private void wykresyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           FolderBrowserDialog okno_sciezki = new FolderBrowserDialog(); //wybór miejsca zapisu danych
-           okno_sciezki.ShowDialog();
-           EksportDoCSV(Program.mainform.tabela_glowna, okno_sciezki.SelectedPath); //eksport danych
+            Wykresy wykresiki = new Wykresy();
+            if (tabela_glowna.RowCount == 0) //jak nie wygenerujemy pierw danych to nie otworzy okna
+            {
+                MessageBox.Show("Wygeneruj najpierw dane wypełniając ankiety!", "Brak danych");
+            }
+            else wykresiki.Show();
         }
+
+
+        //FUNKCJE
 
 
         //funkcja pobierająca dane z DataGridView, zamieniająca je na format .csv i zapisująca je w wybranym miejscu (sciezka) pod nazwą KWESTi_DANE
@@ -205,16 +261,7 @@ namespace PROJEKT_CSS
          }
 
 
-        // działanie opcji Kwestionariusz/Wykresy
-        private void wykresyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Wykresy wykresiki = new Wykresy();
-            if (tabela_glowna.RowCount == 0) //jak nie wygenerujemy pierw danych to nie otworzy okna
-            {
-                MessageBox.Show("Wygeneruj najpierw dane wypełniając ankiety!", "Brak danych");
-            }
-            else wykresiki.Show();
-        }
+        
 
 
 

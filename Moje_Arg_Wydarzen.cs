@@ -13,5 +13,6 @@ namespace PROJEKT_CSS
     {
         //tworzymy zmienne, które będą przekazywane (są argumentami) i metody set get dla nich za jednym zamachem  "Auto-Implemented Properties"
         public string[] wiersz { get; set; } // do przekazywania rekordów z okien (ankiet) do tabela_glowna
+        public string[] etykiety { get; set; } // do przekazywania etykiet (treści pytań) z okien (ankiet) do tabela_glowna
     }
 }

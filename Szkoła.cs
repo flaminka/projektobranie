@@ -20,6 +20,43 @@ namespace PROJEKT_CSS
         }
 
         
+        //PRZYCISKI
+
+
+        //przycisk Wyślij
+        private void szkola_wyslij_Click(object sender, EventArgs e)
+        {
+
+            Moje_Arg_Wydarzen Arg_Tabeli = new Moje_Arg_Wydarzen();//tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie Arg_Tabeli (czyli tworzymy argumenty dla wydarzenia)
+
+            //przypisujemy argumentom wydarzeń wartość
+            string[] rekord = TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));//dodajemy wiersz do tabeli
+            Arg_Tabeli.wiersz = rekord;
+            string[] etykietki = DodawanieEtykiet(IleGroupBoxwOknie(ActiveForm)); //dodajemy etykiety kolumnom
+            Arg_Tabeli.etykiety = etykietki;
+
+            WyzwalaczUzupelnianie_obserwacji(Arg_Tabeli);    //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
+            //dodajemy MessageBoxa, by poinformować o wypełnieniu ankiety i możliwości kolejnego jej wypełnienia
+            if (MessageBox.Show("Ankieta: Szkoła została wypełniona i wysłana do bazy danych. \n Czy chcesz wypełnić ją ponownie?", "Kolejne wypełnienie",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ActiveForm.Close(); //zamykam obecne okno i otwieram nowe (mniej klikania niż przez menu)
+                Szkoła szkoła2 = new Szkoła();
+                szkoła2.Show();
+                //to samo co w oknie głównym, tylko robione z poziomu wywołania tego okna za pomocą przycisku wyślij
+                szkoła2.Uzupelnianie_obserwacji += new EventHandler<Moje_Arg_Wydarzen>(szkoła2_Uzupelnianie_obserwacji);
+            }
+
+            else
+            {
+                ActiveForm.Close(); //zamykam to okno po prostu
+            }
+        }
+
+
+        //FUNKCJE
+
+
         //funkcja licząca ile jest groupboxów w oknie
         public int IleGroupBoxwOknie(Form okno)
         {
@@ -53,42 +90,24 @@ namespace PROJEKT_CSS
         }
 
 
-        //przycisk Wyślij
-         private void szkola_wyslij_Click(object sender, EventArgs e)
-        {
-            
-            string[] rekord = TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));//tworzymy zmienną, której przypisujemy wartość rekordu         
-            Moje_Arg_Wydarzen Arg_Tabeli = new Moje_Arg_Wydarzen();//tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie Arg_Tabeli (czyli tworzymy argumenty dla wydarzenia)
-            Arg_Tabeli.wiersz = rekord;   //przypisujemy tym argumentom wartość
-            WyzwalaczUzupelnianie_obserwacji(Arg_Tabeli);    //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
-
-            //dodajemy MessageBoxa, by poinformować o wypełnieniu ankiety i możliwości kolejnego jej wypełnienia
-            if (MessageBox.Show("Ankieta: Szkoła została wypełniona i wysłana do bazy danych. \n Czy chcesz wypełnić ją ponownie?", "Kolejne wypełnienie",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                ActiveForm.Close(); //zamykam obecne okno i otwieram nowe (mniej klikania niż przez menu)
-                Szkoła szkoła2 = new Szkoła();
-                szkoła2.Show();
-                //to samo co w oknie głównym, tylko robione z poziomu wywołania tego okna za pomocą przycisku wyślij
-                szkoła2.Uzupelnianie_obserwacji += new EventHandler<Moje_Arg_Wydarzen>(szkoła2_Uzupelnianie_obserwacji);
-            }
-
-            else
-            {
-                ActiveForm.Close(); //zamykam to okno po prostu
-            }
-        }
+         //funkcja odpowiadająca za pobieranie treści pytań z groupboxów (tj. ich właściwości Text) i zapisywanie ich w jednym wektorze ciągów znakowych
+         private string[] DodawanieEtykiet(int LiczbaPytan)
+         {
+             string[] etykietki = new string[LiczbaPytan];
+             for (int i = 0; i < LiczbaPytan; i++)
+             {
+                 foreach (GroupBox grb in Controls.OfType<GroupBox>())
+                 {
+                     if (grb.Name == ("groupBox" + (i + 1).ToString())) //musimy zadbać o to, by przy tworzeniu ankiet nie zmieniać nazw ani kolejności groupboxów
+                         etykietki[i] = grb.Text;
+                 }
+             }
+             return etykietki;
+         }
 
 
-       private void szkoła2_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
-        {
-            //jeśli są jakieś właściwości argumentów to przypisujemy wiersz (który niesie wartość z szkoła1) obiektowi z okna Form1 (tabeli)
-            if (e != null && e.wiersz != null)
-                Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
-        }
+         //PRZEKAZYWANIE DANYCH Z Szkoła DO  Form1 ZA POMOCĄ EVENTHANDLER
 
-
-        //PRZEKAZYWANIE DANYCH Z Praca DO  Form1
 
         //tworzymy wydarzenie o argumentach klasy Moje_Arg_Wydarzen, które nazywamy Uzupelnianie_obserwacji
         public event EventHandler<Moje_Arg_Wydarzen> Uzupelnianie_obserwacji;
@@ -101,7 +120,27 @@ namespace PROJEKT_CSS
                 Uzupelnianie_obserwacji(this, e);
         }
 
+        private void szkoła2_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
+        {
+            //jeśli są jakieś właściwości argumentów to dodajemy wiersz (który niesie wartości z praca1) obiektowi z okna Form1, tj. tabela_glowna
+            if (e != null && e.wiersz != null && e.etykiety != null)
+            {
+                //dodajemy etykiety kolumnom
+                int i = 0;
+                foreach (DataGridViewColumn kol in Program.mainform.tabela_glowna.Columns)
+                {
+                    if (kol.Name != "ankieta")
+                    {
+                        kol.ToolTipText = e.etykiety[i];
+                        i++;
+                    }
+                }
+                //dodajemy obserwacje
+                Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
 
+            }
+
+        }
 
 
 

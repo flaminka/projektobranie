@@ -257,6 +257,10 @@
             // 
             // wykres
             // 
+            this.wykres.BorderlineColor = System.Drawing.Color.Black;
+            this.wykres.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.wykres.BorderSkin.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.wykres.BorderSkin.BorderWidth = 5;
             chartArea1.Name = "ChartArea1";
             this.wykres.ChartAreas.Add(chartArea1);
             this.wykres.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -264,7 +268,6 @@
             this.wykres.Legends.Add(legend1);
             this.wykres.Location = new System.Drawing.Point(0, 0);
             this.wykres.Name = "wykres";
-            this.wykres.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             this.wykres.RightToLeft = System.Windows.Forms.RightToLeft.No;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";

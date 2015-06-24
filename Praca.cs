@@ -22,6 +22,9 @@ namespace PROJEKT_CSS
         }
 
 
+        // DO TREŚCI ANKIETY
+
+
         // jeśli w pytaniu 4 mam zaznaczone NIE, to 5 pytanie się chowa
         private void radioButton15_CheckedChanged(object sender, EventArgs e)
         {
@@ -48,6 +51,46 @@ namespace PROJEKT_CSS
         }
 
 
+        //PRZYCISKI
+
+
+        //przycisk Wyślij
+        private void praca_wyslij_Click(object sender, EventArgs e)
+        {
+
+            Moje_Arg_Wydarzen Arg_Tabeli = new Moje_Arg_Wydarzen();//tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie Arg_Tabeli (czyli tworzymy argumenty dla wydarzenia)
+            
+            //przypisujemy argumentom wydarzeń wartość
+            string[] rekord = TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));//dodajemy wiersz do tabeli
+            Arg_Tabeli.wiersz = rekord;
+            string[] etykietki = DodawanieEtykiet(IleGroupBoxwOknie(ActiveForm)); //dodajemy etykiety kolumnom
+            Arg_Tabeli.etykiety = etykietki;  
+
+            WyzwalaczUzupelnianie_obserwacji(Arg_Tabeli);    //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
+
+
+            //dodajemy MessageBoxa, by poinformować o wypełnieniu ankiety i możliwości kolejnego jej wypełnienia
+            if (MessageBox.Show("Ankieta: Praca została wypełniona i wysłana do bazy danych. \n Czy chcesz wypełnić ją ponownie?", "Kolejne wypełnienie",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                ActiveForm.Close(); //zamykam obecne okno i otwieram nowe (mniej klikania niż przez menu)
+                Praca praca2 = new Praca();
+                praca2.Show();
+                //to samo co w oknie głównym, tylko robione z poziomu wywołania tego okna za pomocą przycisku wyślij
+                praca2.Uzupelnianie_obserwacji += new EventHandler<Moje_Arg_Wydarzen>(praca2_Uzupelnianie_obserwacji);
+            }
+
+            else
+            {
+                ActiveForm.Close(); //zamykam to okno po prostu
+            }
+        }
+
+
+
+        //FUNKCJE
+
+
         //funkcja licząca ile jest groupboxów w oknie
         public int IleGroupBoxwOknie(Form okno)
         {
@@ -68,7 +111,7 @@ namespace PROJEKT_CSS
         //funkcja odpowiadająca za pobieranie wszystkich odpowiedzi z groupboxów i łączenie ich w jeden wiersz (reprezentowany jako ciąg string-ów); jej argumentem jest liczba pytań
         private string[] TworzenieRekordu(int LiczbaPytan)
         {
-            string[] rekord = new string[LiczbaPytan+1]; // +1 bo zaczyna się od 0
+            string[] rekord = new string[LiczbaPytan+1]; 
             int i = 0;
             foreach (var grupuś in Controls.OfType<GroupBox>())
             {
@@ -80,43 +123,24 @@ namespace PROJEKT_CSS
             return rekord;
         }
 
-
-       //przycisk Wyślij
-        private void praca_wyslij_Click(object sender, EventArgs e)
+        //funkcja odpowiadająca za pobieranie treści pytań z groupboxów (tj. ich właściwości Text) i zapisywanie ich w jednym wektorze ciągów znakowych
+        private string[] DodawanieEtykiet(int LiczbaPytan)
         {
-            
-            string[] rekord = TworzenieRekordu(IleGroupBoxwOknie(ActiveForm));//tworzymy zmienną, której przypisujemy wartość rekordu         
-            Moje_Arg_Wydarzen Arg_Tabeli = new Moje_Arg_Wydarzen();//tworzymy egzemplarz klasy Moje_Arg_Wydarzen o nazwie Arg_Tabeli (czyli tworzymy argumenty dla wydarzenia)
-            Arg_Tabeli.wiersz = rekord;   //przypisujemy tym argumentom wartość
-            WyzwalaczUzupelnianie_obserwacji(Arg_Tabeli);    //wywołujemy metodę wyzwalającą wydarzenie (let it happen!)
-
-            //dodajemy MessageBoxa, by poinformować o wypełnieniu ankiety i możliwości kolejnego jej wypełnienia
-            if (MessageBox.Show("Ankieta: Praca została wypełniona i wysłana do bazy danych. \n Czy chcesz wypełnić ją ponownie?", "Kolejne wypełnienie",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            string[] etykietki = new string[LiczbaPytan]; 
+            for (int i = 0; i < LiczbaPytan; i++) 
             {
-                ActiveForm.Close(); //zamykam obecne okno i otwieram nowe (mniej klikania niż przez menu)
-                Praca praca2 = new Praca();
-                praca2.Show();
-                //to samo co w oknie głównym, tylko robione z poziomu wywołania tego okna za pomocą przycisku wyślij
-                praca2.Uzupelnianie_obserwacji += new EventHandler<Moje_Arg_Wydarzen>(praca2_Uzupelnianie_obserwacji);
+                foreach (GroupBox grb in Controls.OfType<GroupBox>())
+                {
+                    if (grb.Name == ("groupBox" + (i + 1).ToString())) //musimy zadbać o to, by przy tworzeniu ankiet nie zmieniać nazw ani kolejności groupboxów
+                        etykietki[i] = grb.Text;
+                }
             }
-
-            else
-            {
-                ActiveForm.Close(); //zamykam to okno po prostu
-            }
+            return etykietki;
         }
 
 
-       private void praca2_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
-        {
-            //jeśli są jakieś właściwości argumentów to przypisujemy wiersz (który niesie wartość z praca1) obiektowi z okna Form1 (tabeli)
-            if (e != null && e.wiersz != null)
-                Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
-        }
+        //PRZEKAZYWANIE DANYCH Z Praca DO  Form1 ZA POMOCĄ EVENTHANDLER
 
-
-        //PRZEKAZYWANIE DANYCH Z Praca DO  Form1
 
         //tworzymy wydarzenie o argumentach klasy Moje_Arg_Wydarzen, które nazywamy Uzupelnianie_obserwacji
         public event EventHandler<Moje_Arg_Wydarzen> Uzupelnianie_obserwacji;
@@ -127,6 +151,29 @@ namespace PROJEKT_CSS
             //jeśli wywołamy zdarzenie Uzupelnianie_obserwacji, to będzie ono działać na obiekcie wskazanym przez wskaźnik this (tu: Praca) a jego argumentami (wydarzenia Uzupelnianie_obserwacji) będą e
             if (Uzupelnianie_obserwacji != null)
                 Uzupelnianie_obserwacji(this, e);
+        }
+
+
+        private void praca2_Uzupelnianie_obserwacji(object sender, Moje_Arg_Wydarzen e)
+        {
+            //jeśli są jakieś właściwości argumentów to dodajemy wiersz (który niesie wartości z praca1) obiektowi z okna Form1, tj. tabela_glowna
+            if (e != null && e.wiersz != null && e.etykiety != null)
+            {
+                //dodajemy etykiety kolumnom
+                int i = 0;
+                foreach (DataGridViewColumn kol in Program.mainform.tabela_glowna.Columns)
+                    {
+                        if (kol.Name != "ankieta")
+                        {
+                            kol.ToolTipText = e.etykiety[i];
+                            i++;
+                        }
+                    }
+                //dodajemy obserwacje
+                Program.mainform.tabela_glowna.Rows.Add(e.wiersz);
+
+            }
+
         }
     }
 }
